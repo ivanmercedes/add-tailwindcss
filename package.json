@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "Ivan Mercedes <ivanmercede@gmail.com> (https://ivanmercedes.com/)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.1.2",
+    "microbundle": "^0.15.1"
+  }
 }
