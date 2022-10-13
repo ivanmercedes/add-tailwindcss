@@ -1,6 +1,6 @@
 {
   "name": "add-tailwindcss",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Quick way to add tailwindcss to your new projects with a single command",
   "source": "src/index.js",
   "bin": "dist/index.js",
@@ -17,16 +17,18 @@
     "command-line"
   ],
   "author": "Ivan Mercedes <ivanmercede@gmail.com> (https://ivanmercedes.com/)",
+  "homepage": "https://github.com/ivanmercedes/add-tailwindcss#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ivanmercedes/add-tailwindcss"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.19.3",
     "@babel/node": "^7.19.1",
     "@babel/preset-env": "^7.19.4",
-    "autoprefixer": "^10.4.12",
-    "jest": "^29.1.2",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.1.8"
+    "jest": "^29.1.2"
   },
   "dependencies": {
     "colors": "^1.4.0",
