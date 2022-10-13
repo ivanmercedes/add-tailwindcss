@@ -20,3 +20,4 @@ npx add-tailwindcss
 - Laravel
 - Vite
 - Next.js
+- CRA (Create React App)

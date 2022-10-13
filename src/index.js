@@ -5,16 +5,42 @@ const path = require("path");
 const inquirer = require("inquirer");
 const execSync = require("child_process").execSync;
 
-const FRAMEWORKS = ["Laravel", "Next.js", "Vite", "exit".red];
+const frameworks_list = {};
+
+frameworks_list.Laravel = {
+  packages: "npm install -D tailwindcss postcss autoprefixer",
+  desc: "(Vite only)",
+  path_css: "/resources/css/app.css",
+};
+
+frameworks_list["Next.js"] = {
+  packages: frameworks_list.Laravel.packages,
+  desc: "",
+  path_css: "/styles/globals.css",
+};
+
+frameworks_list.Vite = {
+  packages: frameworks_list.Laravel.packages,
+  desc: "(Ract and Vue)",
+  path_css: "/src/index.css",
+};
+
+frameworks_list.CRA = {
+  packages: frameworks_list.Laravel.packages,
+  desc: "(Create React App)",
+  path_css: "/src/index.css",
+};
+
+frameworks_list.exit = {};
 
 const options = [
   {
     type: "list",
     name: "option",
     message: "In which framework do you want to install Tailwindcss?",
-    choices: FRAMEWORKS.map((name, index) => ({
-      value: index,
-      name: `${index}. ${name}`,
+    choices: Object.keys(frameworks_list).map((name, index) => ({
+      value: name,
+      name: `${index}. ${name} ${frameworks_list[name].desc ?? ""}`,
     })),
   },
 ];
@@ -29,37 +55,22 @@ const main = async () => {
   let opt;
   do {
     opt = await inquirerMenu();
-    switch (FRAMEWORKS[opt]) {
-      case "Laravel":
-        installAllPackages(
-          "npm install -D tailwindcss postcss autoprefixer",
-          FRAMEWORKS[opt],
-        );
-        addDirectiveCSS("/resources/css/app.css");
-        opt = FRAMEWORKS.indexOf(FRAMEWORKS[FRAMEWORKS.length - 1]);
-        break;
+    switch (opt) {
       case "Next.js":
-        installAllPackages(
-          "npm install -D tailwindcss postcss autoprefixer",
-          FRAMEWORKS[opt],
-        );
-        addDirectiveCSS("/styles/globals.css");
-        opt = FRAMEWORKS.indexOf(FRAMEWORKS[FRAMEWORKS.length - 1]);
-        break;
       case "Vite":
-        installAllPackages(
-          "npm install -D tailwindcss postcss autoprefixer",
-          FRAMEWORKS[opt],
-        );
-        addDirectiveCSS("/src/index.css");
-        opt = FRAMEWORKS.indexOf(FRAMEWORKS[FRAMEWORKS.length - 1]);
+      case "Laravel":
+      case "CRA":
+        installAllPackages(frameworks_list[opt].packages, opt);
+        addDirectiveCSS(frameworks_list[opt].path_css);
+        opt = "exit";
         break;
     }
-  } while (opt !== FRAMEWORKS.indexOf(FRAMEWORKS[FRAMEWORKS.length - 1])); // Stop  the CLI
+  } while (opt !== "exit"); // Stop  the CLI
 };
 
 function installAllPackages(command, fileName) {
   try {
+    console.log("Installing tailwindcs...");
     execSync(command, {
       stdio: "inherit",
     });
