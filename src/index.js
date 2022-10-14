@@ -41,9 +41,9 @@ const options = [
     type: "list",
     name: "option",
     message: "In which framework do you want to install Tailwindcss?",
-    choices: Object.keys(frameworks_list).map((name, index) => ({
+    choices: Object.keys(frameworks_list).map((name) => ({
       value: name,
-      name: `${index}. ${name} ${frameworks_list[name].desc ?? ""}`,
+      name: `${name} ${frameworks_list[name].desc ?? ""}`,
     })),
   },
 ];
