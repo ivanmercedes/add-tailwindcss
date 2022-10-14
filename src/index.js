@@ -22,7 +22,7 @@ frameworks_list["Next.js"] = {
 
 frameworks_list.Vite = {
   packages: frameworks_list.Laravel.packages,
-  desc: "(Ract and Vue)",
+  desc: "(React and Vue)",
   path_css: "/src/index.css",
   content: `content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}",]`,
 };
