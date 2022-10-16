@@ -12,12 +12,13 @@
 ## 🔧 Usage
 
 ```shell
+cd project_directory
 npx add-tailwindcss
 ```
 
 ## ✨ Supported Framework
 
-- Laravel
-- Vite
+- Laravel 9 (Vite)
+- Vite (React and Vue)
 - Next.js
 - CRA (Create React App)

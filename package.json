@@ -1,6 +1,6 @@
 {
   "name": "add-tailwindcss",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Quick way to add tailwindcss to your new projects with a single command",
   "source": "src/index.js",
   "bin": "dist/index.js",
